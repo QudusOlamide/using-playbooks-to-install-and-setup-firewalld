@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install elinks
+      action: apt name=elinks state=latest
+    - name: install apache2
+      action: apt name=apache2 state=latest
+    - name: enable & start Apache on system reboot
+      service: name=apache2 enabled=true state=started

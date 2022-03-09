@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - firewalld:
+        service: http
+        permanent: true
+        state: enabled
+    - name: restart service firewalld
+      service:
+        name: firewalld
+        state: restarted

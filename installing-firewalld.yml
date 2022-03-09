@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: install firewalld
+      action: apt name=firewalld state=latest
+    - name: enable firewalld on system reboot
+      service: name=firewalld enabled=true
+    - name: start service firewalld if not started
+      service:
+        name: firewalld
+        state: started
